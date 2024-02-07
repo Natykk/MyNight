@@ -1,0 +1,76 @@
+/* Carousel styling */
+#introCarousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item.active {
+  height: 100vh;
+}
+
+.carousel-item:nth-child(1) {
+  background-image: url('../background/citydraw.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.carousel-item:nth-child(2) {
+  background-image: url('../background/cuisine2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.carousel-item:nth-child(3) {
+  background-image: url('../background/what\ to\ do.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-item:nth-child(4) {
+    background-image: url('../background/blur.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #introCarousel {
+    margin-top: -58.59px;
+  }
+  
+}
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-collapse .navbar-nav {
+  margin-right: auto;
+}
+
+.navbar-collapse .navbar-nav.list-inline {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+#sign-in{
+  margin-left: 800px;
+}
+
+
+
+
+
+
+
