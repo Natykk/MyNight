@@ -41,10 +41,11 @@
 /* Height for devices larger than 576px */
 @media (min-width: 992px) {
   #introCarousel {
-    margin-top: -58.59px;
+    margin-top: -60px;
   }
   
 }
+
 .navbar .nav-link {
   color: #fff !important;
 }
@@ -54,18 +55,26 @@
   align-items: center;
 }
 
+/*
 .navbar-collapse .navbar-nav {
   margin-right: auto;
 }
+*/
 
 .navbar-collapse .navbar-nav.list-inline {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  /*margin-left: auto;*/
 }
 
-#sign-in{
-  margin-left: 800px;
+
+li{
+  align-self: center;
+}
+
+#logo{
+  width: 25%;
+  margin: 0 0 0 0;
 }
 
 
