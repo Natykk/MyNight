@@ -1,0 +1,15 @@
+<!--
+  Fais une boucle for angular pour afficher les éléments de la liste avec @for
+-->
+<div class="container">
+    <ul>
+      @for (boisson of Boissons; track boisson.id) {
+        {{ boisson.nom }}
+      } @empty {
+        Erreur ?
+      }
+    </ul>
+  </div>
+  
+  
+  
