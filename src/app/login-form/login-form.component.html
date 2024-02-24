@@ -1,0 +1,18 @@
+<div class="form-popup" id="myForm">
+  <form class="form-container">
+    <h1>{{ data.status }}</h1>
+
+    <label ><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label ><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    @if( data.status == 'Login'){
+      <button type="submit" (click)="connection()" class="btn">{{ data.status }}</button>
+    } @else {
+      <button type="submit" (click)="accountCreation()" class="btn">{{ data.status }}</button>
+    }
+
+  </form>
+</div>

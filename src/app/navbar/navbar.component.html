@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; height: 60px; width: 100%">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarExample01">
+      <ul class="navbar-nav" id="img-nav">
+        <li class="nav-item">
+          <img id="logo" src="./img/logo.png" alt="logo MyNight">
+        </li>
+      </ul>
+      <ul class="navbar-nav" id="button-nav">
+        <li class="nav-item">
+          <button class="navbar-brand nav-link" (click)="navigateTo(0)" [class.active]="activeIndex === 0"><strong>Home</strong></button>
+        </li>
+        <li class="nav-item">
+          <button class="navbar-brand nav-link" (click)="navigateTo(1)" [class.active]="activeIndex === 1"><strong>Recipe Helper</strong></button>
+        </li>
+        <li class="nav-item">
+          <button class="navbar-brand nav-link" (click)="navigateTo(2)" [class.active]="activeIndex === 2"><strong>What to do</strong></button>
+        </li>
+        <li class="nav-item">
+          <button class="navbar-brand nav-link" (click)="navigateTo(3)" [class.active]="activeIndex === 3"><strong>Back home</strong></button>
+        </li>
+        <li class="nav-item">
+          <button class="navbar-brand nav-link" (click)="navigateTo(4)" [class.active]="activeIndex === 4"><strong>About us</strong></button>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" id="log-nav">
+        <li class="nav-item" id="sign-in">
+          <a class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand nav-link" (click)="openLoginDialog()"><strong>Login</strong></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

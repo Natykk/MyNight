@@ -1,10 +1,20 @@
+// Lecture du fichier txt pour les clés 
+const fs = require('fs');
+let cle = fs.readFile('cle.txt', 'utf8', (err, data) => {
+  if(err) {
+    console.error(err);
+    return;
+  }
+  console.log(data)
+});
+
 const https = require('https');
 
 // Définir les détails de l'API REST
 const options = {
     hostname: 'api.spoonacular.com',
-    port: 443,
-    path: '/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=ca05937b768e473499187c0ce1ccc8ea',
+    port: 80,
+    path: '/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey='+cle,
     method: 'GET',
   };
 const express = require('express');

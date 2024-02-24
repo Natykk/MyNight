@@ -1,152 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>MyNight</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-    <!-- MDB -->
-    <link rel="stylesheet" href="css/mdb.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>MyNight</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
-      <!--Main Navigation-->
-  <header>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; height: 60px; width: 100%">
-      <div class="container-fluid">
-        <!-- Navbar brand -->
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav" id="img-nav">
-            <li class="nav-item">
-              <img id="logo" src="./img/logo.png" alt="logo MyNight">
-            </li>
-          </ul>
-          <ul class="navbar-nav" id="button-nav">
-            <li class="nav-item">
-              <button class="navbar-brand nav-link" data-mdb-target="#introCarousel" data-mdb-slide-to="0"><strong>Home</strong></button>
-            </li>
-            <li class="nav-item">
-              <button class="navbar-brand nav-link" data-mdb-target="#introCarousel" data-mdb-slide-to="1"><strong>Recipe Helper</strong></button>
-            </li>
-            <li class="nav-item">
-              <button class="navbar-brand nav-link" data-mdb-target="#introCarousel" data-mdb-slide-to="2"><strong>What to do</strong></button>
-            </li>
-            <li class="nav-item">
-              <button class="navbar-brand nav-link" data-mdb-target="#introCarousel" data-mdb-slide-to="3"><strong>Back home</strong></button>
-            <li class="nav-item">
-              <button class="navbar-brand nav-link" data-mdb-target="#introCarousel" data-mdb-slide-to="4"><strong>About us</strong></button>
-            </li>
-          </ul>
-          <ul class="navbar-nav" id="log-nav">
-            <li class="nav-item" id="sign-in">
-              <a class="navbar-brand nav-link" href="https://mdbootstrap.com/docs/standard/"><strong>Sign in</strong></a>
-            </li>
-            <a class="navbar-brand nav-link" href="https://mdbootstrap.com/docs/standard/"><strong>Login</strong></a>
-            <li class="nav-item">
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar -->
-
-    <!-- Carousel wrapper -->
-    <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-carousel-init>
-      <!-- Indicators -->
-      <div class="carousel-indicators">
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="3"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="4"></li>
-      </div>
-
-      <!-- Inner -->
-      <div class="carousel-inner">
-        <!-- Single item -->
-        <div class="carousel-item active" >
-          <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-            <div class="d-flex justify-content-center align-items-center h-100">
-              <div class="text-white text-center" data-mdb-theme="dark">
-                <h1 class="mb-3" id="homepage" >What is My Night ?</h1>
-                <h5>MyNight (Manage your night) is a service of management for your parties.</h5> <h5>You can use "Recipe Helper" to make cocktails or apetizers with simple recipes.</h5> <h5>Search a bar or somewhere else to spend your night ? go to "What to do".</h5><h5>What to go back home or to a party, pick a carpooling in "Go back Home"</h5>
-                <!--
-                <a class="btn btn-outline-light btn-lg m-2" data-mdb-ripple-init href="https://www.youtube.com/watch?v=c9B4TPnak1A"
-                  role="button" rel="nofollow" target="_blank">Start tutorial</a>
-                <a class="btn btn-outline-light btn-lg m-2" data-mdb-ripple-init href="https://mdbootstrap.com/docs/standard/"
-                  target="_blank" role="button">Download MDB UI KIT</a>
-                -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single item -->
-        <div class="carousel-item" >
-          <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-            <div class="d-flex justify-content-center align-items-center h-100">
-              <div class="text-white text-center" id="recipe_helper">
-                <h2>Manger</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single item -->
-        <div class="carousel-item">
-          <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-            <div class="d-flex justify-content-center align-items-center h-100" data-mdb-theme="dark">
-              <div class="text-white text-center">
-                <h2>Trouver un resto</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single item -->
-        <div class="carousel-item">
-          <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-            <div class="d-flex justify-content-center align-items-center h-100" data-mdb-theme="dark">
-              <div class="text-white text-center">
-                <h2>Retourner a la maison </h2>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single item -->
-        <div class="carousel-item">
-          <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-            <div class="d-flex justify-content-center align-items-center h-100" data-mdb-theme="dark">
-              <div class="text-white text-center">
-                <h2>A propos</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- Inner -->
-
-      <!-- Controls -->
-      <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <!-- Carousel wrapper -->
-  </header>
-  <!--Main layout-->
-    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+<body class="mat-typography">
+<!--Main Navigation-->
+<header>
+  <app-root></app-root>
+</header>
+<!--Main layout-->
+<script type="text/javascript" src="js/mdb.umd.min.js"></script>
 </body>
 </html>
