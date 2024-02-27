@@ -1,18 +1,22 @@
 <div class="form-popup" id="myForm">
-  <form class="form-container">
+  <form class="form-container" [formGroup]="loginForm">
+    <!-- affiche une erreur de connexion -->
     <h1>{{ data.status }}</h1>
 
-    <label ><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label ><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    @if( data.status == 'Login'){
-      <button type="submit" (click)="connection()" class="btn">{{ data.status }}</button>
-    } @else {
-      <button type="submit" (click)="accountCreation()" class="btn">{{ data.status }}</button>
+    @if(mdp_error){
+      <p>Username or Password is wrong</p>
     }
 
+    <label><b>Username</b></label>
+    <input id="user" type="text" formControlName="user" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" formControlName="mdp" required>
+
+    @if(data.status == "Login"){
+      <button type="submit" (click)="connection()" class="btn">Login</button>
+    }@else{
+      <button type="submit" (click)="accountCreation()" class="btn">Register</button>
+    }
   </form>
 </div>

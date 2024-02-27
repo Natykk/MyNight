@@ -73,18 +73,21 @@ app.use(cors());
 
 // endpoint pour la création d'un compte utilisateur
 app.post('/signup', (req, res) => {
-  if (!req.body.name || !req.body.password) {
+  console.log(req.body);
+  if (!req.body.user || !req.body.mdp) {
     res.json({ success: false, msg: 'Entrez une adresse e-mail et un mot de passe.' });
   } else {
     const newUser = new User({
-      name: req.body.name,
-      password: req.body.password
+      name: req.body.user,
+      password: req.body.mdp
     });
 
     // Enregistrement de l'utilisateur dans la base de données
     newUser.save()
       .then(() => {
         res.json({ success: true, msg: 'Utilisateur créé avec succès.' });
+        // retourner une réponse OK
+        return res.status(200);
       })
       .catch((err) => {
         if (err.code === 11000) {
@@ -128,9 +131,10 @@ app.get('/api', (req, res) => {
 
 // Endpoint pour l'authentification
 app.post('/auth', async (req, res) => {
+  console.log(req.body);
   try {
     // Recherche de l'utilisateur dans la base de données par nom
-    const user = await User.findOne({ name: req.body.name });
+    const user = await User.findOne({ name: req.body.user });
 
     // Vérification de la présence de l'utilisateur
     if (!user) {
@@ -138,7 +142,7 @@ app.post('/auth', async (req, res) => {
     }
 
     // Comparaison du mot de passe fourni avec celui stocké dans la base de données
-    const isMatch = await user.comparePassword(req.body.password);
+    const isMatch = await user.comparePassword(req.body.mdp);
 
     // Si le mot de passe correspond
     if (isMatch) {
