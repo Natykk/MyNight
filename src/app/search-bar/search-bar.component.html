@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="ingredientsInput">Ingrédients (séparés par des virgules) :</label>
+    <input type="text" id="ingredientsInput" [(ngModel)]="ingredientsInPossession" name="ingredientsInPossession" />
+  </div>
+
+  <button type="submit">Rechercher</button>
+</form>
+
+<div *ngIf="recipes.length > 0">
+  <h3>Résultats de la recherche :</h3>
+  <ul>
+    <li *ngFor="let recipe of ListBoissons">
+      {{ recipe.id }} - {{ recipe.title }}
+    </li>
+  </ul>
+</div>

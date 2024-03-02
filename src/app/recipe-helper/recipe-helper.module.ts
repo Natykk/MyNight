@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BoissonComponent } from '../components/boisson/boisson.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
 
 
 @NgModule({
-  declarations: [BoissonComponent],
+  declarations: [],
   imports: [
     CommonModule
   ],
-  exports: [BoissonComponent],
+  exports: [],
   providers: [HttpClientModule]
 })
 export class RecipeHelperModule { }

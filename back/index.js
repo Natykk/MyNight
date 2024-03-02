@@ -18,8 +18,6 @@ const cle = donneeCle["cle_sponnacular"];
 const user_bdd = donneeCle["user_bdd"];
 const password_bdd = donneeCle["password_bdd"];
 
-
-
 // Initialisation d'une application Express
 const app = express();
 
@@ -52,13 +50,7 @@ const connectToMongoDB = () => {
     });
 };
 
-// Configuration des détails de l'API REST externe
-const options = {
-  hostname: 'api.spoonacular.com',
-  port: 443,
-  path: '/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=' + cle,
-  method: 'GET',
-};
+
 
 connectToMongoDB();
 
@@ -101,12 +93,30 @@ app.post('/signup', (req, res) => {
 });
 
 // endpoint pour l'API
-app.get('/api', (req, res) => {
-  // Effectuer la requête HTTPS vers l'API externe
-  const requ = https.request(options, (response) => {
-    let data = '';
+app.post('/api', (req, res) => {
+  // Obtenez les ingrédients à partir des paramètres de requête ou utilisez une liste par défaut
+  let ingredients = req.body.ingredientsInPossession;
+  ingredients = ingredients.split(',');
+  let data = '';
 
-    // Accumuler les morceaux de données reçus
+  // Assurez-vous que ingredients est défini et est un tableau
+  if (!ingredients || !Array.isArray(ingredients)) {
+    console.log(ingredients);
+    console.log(ingredients.class);
+    return res.status(400).json({ error: 'Veuillez fournir des ingrédients valides' });
+  }
+
+  // Construisez la requête externe avec les ingrédients fournis
+  const options = {
+    hostname: 'api.spoonacular.com',
+    port: 443,
+    path: `/recipes/findByIngredients?ingredients=${ingredients.join(',')}&number=10&apiKey=${cle}`,
+    method: 'GET',
+  };
+
+  // Effectuez la requête HTTPS vers l'API externe
+  const requ = https.request(options, (response) => {
+    // Accumulez les morceaux de données reçus
     response.on('data', (chunk) => {
       data += chunk;
     });
@@ -114,8 +124,8 @@ app.get('/api', (req, res) => {
     // Une fois que toutes les données ont été reçues
     response.on('end', () => {
       console.log(data);
-      // Envoyer les données au client si nécessaire
-      res.json({ data });
+      // Envoyez les données au client
+      res.status(200).json({ message: 'Requête API réussie', content: data });
     });
   });
 
@@ -125,9 +135,10 @@ app.get('/api', (req, res) => {
     res.status(500).json({ error: 'Erreur lors de la requête vers l\'API externe' });
   });
 
-  // Terminer la requête (important pour l'envoi de la requête)
+  // Terminez la requête (important pour l'envoi de la requête)
   requ.end();
 });
+
 
 // Endpoint pour l'authentification
 app.post('/auth', async (req, res) => {

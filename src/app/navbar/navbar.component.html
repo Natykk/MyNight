@@ -1,36 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; height: 60px; width: 100%">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarExample01">
-      <ul class="navbar-nav" id="img-nav">
-        <li class="nav-item">
-          <img id="logo" src="./img/logo.png" alt="logo MyNight">
-        </li>
-      </ul>
-      <ul class="navbar-nav" id="button-nav">
-        <li class="nav-item">
-          <button class="navbar-brand nav-link" (click)="navigateTo(0)" [class.active]="activeIndex === 0"><strong>Home</strong></button>
-        </li>
-        <li class="nav-item">
-          <button class="navbar-brand nav-link" (click)="navigateTo(1)" [class.active]="activeIndex === 1"><strong>Recipe Helper</strong></button>
-        </li>
-        <li class="nav-item">
-          <button class="navbar-brand nav-link" (click)="navigateTo(2)" [class.active]="activeIndex === 2"><strong>What to do</strong></button>
-        </li>
-        <li class="nav-item">
-          <button class="navbar-brand nav-link" (click)="navigateTo(3)" [class.active]="activeIndex === 3"><strong>Back home</strong></button>
-        </li>
-        <li class="nav-item">
-          <button class="navbar-brand nav-link" (click)="navigateTo(4)" [class.active]="activeIndex === 4"><strong>About us</strong></button>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto" id="log-nav">
-        <li class="nav-item" id="sign-in">
-          <a class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in</strong></a>
-        </li>
-        <li class="nav-item">
-          <a class="navbar-brand nav-link" (click)="openLoginDialog()"><strong>Login</strong></a>
-        </li>
-      </ul>
+@if(windowWidth  > 1060){
+  <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; height: 60px; width: 100%">
+    <div class="container-fluid">
+
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav" id="img-nav">
+          <li class="nav-item">
+            <img id="logo" ngSrc="./img/logo.png" alt="logo MyNight" height="452" width="727">
+          </li>
+        </ul>
+        <ul class="navbar-nav" id="button-nav">
+          <li class="nav-item">
+            <button class="navbar-brand nav-link" (click)="navigateTo(0)" [class.active]="activeIndex === 0"><strong>Home</strong></button>
+          </li>
+          <li class="nav-item">
+            <button class="navbar-brand nav-link" (click)="navigateTo(1)" [class.active]="activeIndex === 1"><strong>Recipe Helper</strong></button>
+          </li>
+          <li class="nav-item">
+            <button class="navbar-brand nav-link" (click)="navigateTo(2)" [class.active]="activeIndex === 2"><strong>What to do</strong></button>
+          </li>
+          <li class="nav-item">
+            <button class="navbar-brand nav-link" (click)="navigateTo(3)" [class.active]="activeIndex === 3"><strong>Back home</strong></button>
+          </li>
+          <li class="nav-item">
+            <button class="navbar-brand nav-link" (click)="navigateTo(4)" [class.active]="activeIndex === 4"><strong>About us</strong></button>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" id="log-nav">
+          <li class="nav-item" id="sign-in">
+            <a class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand nav-link" (click)="openLoginDialog()"><strong>Login</strong></a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+} @else {
+ <!-- navbar mobile/ menu hamburger  -->
+  <div class="fond_barre" >
+  <header>
+    <h2  id="navbar_mobile"   (click)="changeVisibility()">&#9776;</h2>
+  </header>
+  <nav class="menu-icon">
+    <a class="navbar-brand nav-link " href="#" (click)="changeVisibility()">Menu</a>
+    <a class="navbar-brand nav-link " href="#" (click)="navigateTo(0)">Home</a>
+    <a class="navbar-brand nav-link " href="#" (click)="navigateTo(1)">Recipe Helper</a>
+    <a class="navbar-brand nav-link " href="#" (click)="navigateTo(2)">What to do</a>
+    <a class="navbar-brand nav-link " href="#" (click)="navigateTo(3)">Back home</a>
+    <a class="navbar-brand nav-link " href="#" (click)="navigateTo(4)">About us</a>
+    <a class="navbar-brand nav-link " href="#" (click)="openSignInDialog()">Sign in</a>
+    <a class="navbar-brand nav-link " href="#" (click)="openLoginDialog()">Login</a>
+  </nav>
+
+</div>
+}
+
+

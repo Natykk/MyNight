@@ -7,7 +7,20 @@
           <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white text-center">
               <h1 class="mb-3">{{ slide.title }}</h1>
-              <h5>{{ slide.content }}</h5>
+              <!-- switch case for different slides  -->
+              @if(slide.title === 'Recette'){
+                <app-search-bar></app-search-bar>
+              } @else if (slide.title ==='Accueil'){
+                <p>{{ slide.content }}</p>
+              } @else if (slide.title ==='Map'){
+                <p>{{slide.content}}</p>
+              } @else if (slide.title === 'Covoiturage'){
+                <p>{{ slide.content }}</p>
+              } @else if (slide.title === 'A propos'){
+                <p>{{ slide.content }}</p>
+              } @else {
+                <p>{{ slide.content }}</p>
+              }
             </div>
           </div>
         </div>
