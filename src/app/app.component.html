@@ -15,7 +15,23 @@
               } @else if (slide.title ==='Map'){
                 <p>{{slide.content}}</p>
               } @else if (slide.title === 'Covoiturage'){
-                <p>{{ slide.content }}</p>
+                <!-- affiche une balise suivant le bouton appuyé   -->
+                <div>
+                <button (click)="ButtonChoisi = 'Proposer une Trajet'">Proposer une Trajet</button>
+                <button (click)="ButtonChoisi = 'Rechercher un Trajet'">Rechercher un Trajet</button>
+                @if (ButtonChoisi === 'Proposer une Trajet'){
+                  <div>
+                  <app-ajout_Trajet></app-ajout_Trajet>
+                  </div>
+                } @else if (ButtonChoisi === 'Rechercher un Trajet'){
+
+                }
+                </div>
+
+
+
+
+
               } @else if (slide.title === 'A propos'){
                 <p>{{ slide.content }}</p>
               } @else {

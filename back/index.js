@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 // Import du modèle utilisateur
 const User = require('./user');
 const jwt = require('jwt-simple');
-
+const Trajet = require('./trajets');
 
 let fichier = fs.readFileSync('donnee.json');
 let donneeCle= JSON.parse(fichier);
@@ -26,9 +26,6 @@ const port = 3080;
 
 // Clé secrète pour la création de jetons JWT
 const secret = donneeCle["secret"]
-
-
-
 
 
 
@@ -99,7 +96,7 @@ app.post('/api', (req, res) => {
   ingredients = ingredients.split(',');
   let data = '';
 
-  // Assurez-vous que ingredients est défini et est un tableau
+  // les/l'ingredients n'est pas null et est un tableau
   if (!ingredients || !Array.isArray(ingredients)) {
     console.log(ingredients);
     console.log(ingredients.class);
@@ -138,6 +135,36 @@ app.post('/api', (req, res) => {
   // Terminez la requête (important pour l'envoi de la requête)
   requ.end();
 });
+
+//Endpoint pour le covoiturage
+app.post('/ajout_trajet', (req, res) => {
+  // ajout d'un trajet
+  //trajets.push(new Trajet(req.body.depart, req.body.arrivee, req.body.date, req.body.heure, req.body.nbPlace, req.body.prix, req.body.conducteur, req.body.passagers));
+  console.log("ajout trajet");
+  console.log(req.body);
+  const newTrajet = new Trajet({
+    depart: req.body.depart,
+    arrivee: req.body.arrivee,
+    Date: req.body.date,
+    Heure: req.body.heure,
+    Nbplace: req.body.nbPlace,
+    Prix: req.body.prix
+  });
+    newTrajet.save()
+    .then(() => {
+      res.json({ success: true, msg: 'Trajet ajouté avec succès.' });
+      // retourner une réponse OK
+      return res.status(200);
+    });
+
+
+});
+
+app.post('/getTrajets', (req, res) => {
+  // retourne la liste des trajets
+  res.json({ success: true, trajets: trajets });
+});
+
 
 
 // Endpoint pour l'authentification
