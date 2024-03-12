@@ -35,6 +35,13 @@
   background-position: center center;
 }
 
+.carousel-item:nth-child(5) {
+  background-image: url('../img/background/about_us.jpg'); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
 /* Height for devices larger than 992px */
 @media (min-width: 992px) {
   #introCarousel {

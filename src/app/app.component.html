@@ -10,8 +10,8 @@
               <!-- switch case for different slides  -->
               @if(slide.title === 'Recette'){
                 <app-search-bar></app-search-bar>
-              } @else if (slide.title ==='Accueil'){
-                <p>{{ slide.content }}</p>
+              } @else if (slide.title ==='What is Manage Your Night ?'){
+                <h5>MyNight is a service of management for your parties.</h5> <h5>You can use "Recipe Helper" to make cocktails or apetizers with simple recipes.</h5> <h5>Search a bar or somewhere else to spend your night ? go to "What to do".</h5><h5>What to go back home or to a party, pick a carpooling in "Go back Home"</h5>
               } @else if (slide.title ==='Map'){
                 <p>{{slide.content}}</p>
               } @else if (slide.title === 'Covoiturage'){
@@ -27,13 +27,9 @@
 
                 }
                 </div>
-
-
-
-
-
-              } @else if (slide.title === 'A propos'){
-                <p>{{ slide.content }}</p>
+                
+              } @else if (slide.title === 'About us'){
+                <h5>We're a group of 4 students in our 3rd year of a bachelor's degree in computer science.</h5> <h5>The basic aim of the project was to create a web application using Angular, API Rest, Nodejs and MongoDB technologies. </h5>
               } @else {
                 <p>{{ slide.content }}</p>
               }

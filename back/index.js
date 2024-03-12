@@ -141,7 +141,7 @@ app.post('/ajout_trajet', (req, res) => {
   // ajout d'un trajet
   //trajets.push(new Trajet(req.body.depart, req.body.arrivee, req.body.date, req.body.heure, req.body.nbPlace, req.body.prix, req.body.conducteur, req.body.passagers));
   console.log("ajout trajet");
-  console.log(req.body);
+  console.log(req);
   const newTrajet = new Trajet({
     depart: req.body.depart,
     arrivee: req.body.arrivee,
@@ -156,8 +156,6 @@ app.post('/ajout_trajet', (req, res) => {
       // retourner une réponse OK
       return res.status(200);
     });
-
-
 });
 
 app.post('/getTrajets', (req, res) => {

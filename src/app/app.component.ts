@@ -22,7 +22,7 @@ export class AppComponent {
 
   slides = [
     {
-      title: 'Accueil',
+      title: 'What is Manage Your Night ?',
       content: 'Content for What is My Night?',
       style: { 'background-color': 'rgba(0, 0, 0, 0.6)' }
     },
@@ -43,7 +43,7 @@ export class AppComponent {
       style: { 'background-color': 'rgba(0, 0, 0, 0.3)' }
     },
     {
-      title: 'A propos',
+      title: 'About us',
 
       content: 'Content for A propos slide',
       style: { 'background-color': 'rgba(0, 0, 0, 0.3)' }
