@@ -25,14 +25,25 @@
             <button class="navbar-brand nav-link" (click)="navigateTo(4)" [class.active]="activeIndex === 4"><strong>About us</strong></button>
           </li>
         </ul>
+        @if (!isConnected()) {
         <ul class="navbar-nav ml-auto" id="log-nav">
           <li class="nav-item" id="sign-in">
-            <a class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in</strong></a>
+            <a class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in  </strong></a>
           </li>
           <li class="nav-item">
             <a class="navbar-brand nav-link" (click)="openLoginDialog()"><strong>Login</strong></a>
           </li>
         </ul>
+      } @else {<!--Fais un element "Welcome Nom" et un bouton de deconnexion-->
+        <ul class="navbar-nav ml-auto" id="log-nav">
+          <li class="nav-item" id="sign-in">
+            <p class="navbar-brand nav-link" ><strong>Welcome {{getUserLoggedIn()}}</strong></p>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand nav-link" (click)="logOut()"><strong>Log out</strong></a>
+          </li>
+        </ul>
+      }
       </div>
     </div>
   </nav>
