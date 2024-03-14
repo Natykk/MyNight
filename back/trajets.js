@@ -24,16 +24,20 @@ var TrajetSchema = new Schema({
   }
   ,
   Nbplace: {
-    type: String,
+    type: Number,
     required: true  // Le nombre de places est requis.
   },
   Prix: {
     type: Number,
     required: true  // Le Prix est requis.
   },
-  conducteur:{
+  Id_Conducteur:{
     type: String,
     required: true  // Le token du conducteur est requis.
+  },
+  Conducteur:{
+    type: String,
+    required: true  // Le conducteur est requis.
   }
 
 });

@@ -1,1 +1,18 @@
-<p>affiche-trajet works!</p>
+
+<button (click)="afficherTrajets()">Rafraichir</button>
+<!-- formate le json -->
+
+<!-- affiche les trajets -->
+<div *ngFor="let trajet of listTrajets">
+    <p>Depart: {{ trajet.Depart }}</p>
+    <p>Arrivee: {{ trajet.Arrivee }}</p>
+    <p>Date: {{ trajet.Date }}</p>
+    <p>Heure: {{ trajet.Heure }}</p>
+    <p>Nombre de place: {{ trajet.Nbplace }}</p>
+    <p>Prix: {{ trajet.Prix }}</p>
+    <p>Conducteur: {{ trajet.Conducteur }}</p>
+    <!-- Si vous avez une liste de passagers, ajustez la propriété suivante en conséquence -->
+    <p>Passagers: {{ trajet.Passagers }}</p>
+    <p>------------------------------------</p>
+</div>
+

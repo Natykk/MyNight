@@ -7,16 +7,16 @@ import {NgClass, NgForOf, NgStyle, NgTemplateOutlet} from "@angular/common";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {SearchBarComponent} from "./search-bar/search-bar.component";
 import {Ajout_TrajetComponent} from "./ajout_Trajet/ajout_Trajet.component";
+import { AfficheTrajetComponent } from "./affiche-trajet/affiche-trajet.component";
 
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HttpClientModule, RecipeHelperModule, NgForOf, NavbarComponent, NgTemplateOutlet, SearchBarComponent, NgStyle, NgClass, Ajout_TrajetComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers : [HttpClientModule,ApiService]
-
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    providers: [HttpClientModule, ApiService],
+    imports: [RouterOutlet, HttpClientModule, RecipeHelperModule, NgForOf, NavbarComponent, NgTemplateOutlet, SearchBarComponent, NgStyle, NgClass, Ajout_TrajetComponent, AfficheTrajetComponent]
 })
 export class AppComponent {
 

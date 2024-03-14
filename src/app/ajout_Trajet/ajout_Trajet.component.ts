@@ -21,6 +21,7 @@ export class Ajout_TrajetComponent {
   nbPlace: string = '';
   prix: string = '';
   conducteur: string = '';
+  
 
 
 
@@ -32,8 +33,27 @@ export class Ajout_TrajetComponent {
     console.log('ajout trajet component avant auth');
       console.log('ajout trajet component');
       // envoie les informations depart, arrivee, date, heure, nbPlace, prix, conducteur, passagers au backend a l'addresse http://localhost:3000/ajout_trajet
+      fetch('http://localhost:3080/ajout_trajet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.cookieService.get('token')}`
+        },
+        body: JSON.stringify({
+          depart: this.depart,
+          arrivee: this.arrivee,
+          date: this.date,
+          heure: this.heure,
+          nbPlace: this.nbPlace,
+          prix: this.prix,
+          conducteur: this.cookieService.get('token'),
+          username : this.cookieService.get('user')
+        })
+      })  .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
 
-      this.apiService.AddTrajet(this.depart, this.arrivee, this.date, this.heure, this.nbPlace, this.prix,this.cookieService.get('token'));
 
   }
 
