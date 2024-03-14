@@ -107,7 +107,7 @@ app.post('/api', (req, res) => {
   const options = {
     hostname: 'api.spoonacular.com',
     port: 443,
-    path: `/recipes/findByIngredients?ingredients=${ingredients.join(',')}&number=10&apiKey=${cle}`,
+    path: `/recipes/findByIngredients?type=drink&ingredients=${ingredients.join(',')}&number=10&apiKey=${cle}`,
     method: 'GET',
   };
 

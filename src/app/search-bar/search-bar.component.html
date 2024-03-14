@@ -8,11 +8,12 @@
 </form>
 
 @if(Affiche_Carte){
+  <div margin-top="20px">
   <!-- met un bouton pour revenir a la liste -->
-  <button (click)="Affiche_Carte = false">Retour à la liste</button>
+  <button (click)="Affiche_Carte = false" class="return-button">Retour à la liste</button>
   <!-- affiche l'image en taille carré  -->
   <img src="{{url}}" alt="image" width="600" height="681">
-  
+  </div>
 
 }@else{
   <div *ngIf="recipes.length > 0">
