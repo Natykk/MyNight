@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   // URL de l'API
   REST_API: string = 'http://localhost:3080/api';
+  CARD_API: string = 'http://localhost:3080/card';
   
   
 
@@ -16,7 +17,10 @@ export class ApiService {
   GetBoisson(ingredientsInPossession: string) {
     return this.httpClient.post<any[]>(`${this.REST_API}`, { ingredientsInPossession });
 
-    //return this.httpClient.get<any[]>(this.REST_API);
+  }
+
+  GetCard(id : string) {
+    return this.httpClient.post<any[]>(`${this.CARD_API}`, { id });
   }
 
   

@@ -19,9 +19,11 @@ import { ApiService} from "../services/api.service";
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
+  Affiche_Carte: boolean = false;
   searchQuery: string = '';
   ingredientsInPossession: string = '';
   Boissons: any = [];
+  url = '';
   recipes = [
     { name: 'Spaghetti Bolognese', ingredients: ['pasta', 'tomato sauce', 'ground beef'] },
     { name: 'Chicken Stir-Fry', ingredients: ['chicken', 'vegetables', 'soy sauce'] },
@@ -32,6 +34,7 @@ export class SearchBarComponent {
   constructor(private apiService: ApiService) {}
 
   onSubmit() {
+    this.Affiche_Carte = false;
     // Logique de recherche en fonction des ingrédients en possession
     if (this.ingredientsInPossession.trim() !== '') {
       const searchIngredients = this.ingredientsInPossession.split(',');
@@ -62,15 +65,22 @@ export class SearchBarComponent {
           console.error('La propriété "content" n\'est pas présente dans la réponse API.');
         }
       });
-    } else {
-      // Si aucun ingrédient n'est saisi, réinitialisez la liste des recettes
-      this.recipes = [
-        { name: 'Spaghetti Bolognese', ingredients: ['pasta', 'tomato sauce', 'ground beef'] },
-        { name: 'Chicken Stir-Fry', ingredients: ['chicken', 'vegetables', 'soy sauce'] },
-        // Ajoutez d'autres plats avec leurs ingrédients
-      ];
     }
   }
+
+  RecipeChosen(recipe: any) {
+    
+    // Logique pour choisir une recette
+    console.log('Recette choisie :', recipe);
+    this.apiService.GetCard(recipe).subscribe((response: any) => {
+      // on récupère l'url de la recette
+      this.url = JSON.parse(response.content).url;
+
+      this.Affiche_Carte = true;
+
+  });
+  }
+
 }
 
 

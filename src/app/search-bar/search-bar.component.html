@@ -7,11 +7,22 @@
   <button type="submit">Rechercher</button>
 </form>
 
-<div *ngIf="recipes.length > 0">
-  <h3>Résultats de la recherche :</h3>
-  <ul>
-    <li *ngFor="let recipe of ListBoissons">
-      {{ recipe.id }} - {{ recipe.title }}
-    </li>
-  </ul>
-</div>
+@if(Affiche_Carte){
+  <!-- met un bouton pour revenir a la liste -->
+  <button (click)="Affiche_Carte = false">Retour à la liste</button>
+  <!-- affiche l'image en taille carré  -->
+  <img src="{{url}}" alt="image" width="600" height="681">
+  
+
+}@else{
+  <div *ngIf="recipes.length > 0">
+    <h3>Résultats de la recherche :</h3>
+    <ul>
+      <li *ngFor="let recipe of ListBoissons" (click)="RecipeChosen(recipe.id)">
+        {{ recipe.id }} - {{ recipe.title }}
+      </li>
+    </ul>
+  </div>
+}
+
+

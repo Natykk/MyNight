@@ -190,6 +190,44 @@ app.get('/getTrajets', async (req, res) => {
   
 });
 
+app.post('/card',  (req, res) => {
+  console.log(req.body);
+  let id = req.body.id;
+  let data = '';
+  
+  // Construisez la requête externe avec les ingrédients fournis https://api.spoonacular.com/recipes/631913/card?apiKey=ca05937b768e473499187c0ce1ccc8ea
+  const options = {
+    hostname: 'api.spoonacular.com',
+    port: 443,
+    path: `/recipes/${id}/card?apiKey=${cle}`,
+    method: 'GET',
+  };
+
+  // Effectuez la requête HTTPS vers l'API externe
+  const requ = https.request(options, (response) => {
+    // Accumulez les morceaux de données reçus
+    response.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // Une fois que toutes les données ont été reçues
+    response.on('end', () => {
+      console.log(data);
+      // Envoyez les données au client
+      res.status(200).json({ message: 'Requête API réussie', content: data });
+    });
+  });
+
+  // Gestion des erreurs de requête
+  requ.on('error', (error) => {
+    console.error(error);
+    res.status(500).json({ error: 'Erreur lors de la requête vers l\'API externe' });
+  });
+
+  // Terminez la requête (important pour l'envoi de la requête)
+  requ.end();
+});
+
 
 
 // Endpoint pour l'authentification

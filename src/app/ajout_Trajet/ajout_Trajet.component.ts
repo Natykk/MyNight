@@ -37,7 +37,7 @@ export class Ajout_TrajetComponent {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.cookieService.get('token')}`
+          'Authorization': `Bearer ${this.cookieService.get('token')}`,
         },
         body: JSON.stringify({
           depart: this.depart,
