@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
   // URL de l'API
-  REST_API: string = 'http://localhost:3080/api';
+  REST_API_INGREDIENT: string = 'http://localhost:3080/api_ingredient';
+  REST_API_NOM: string = 'http://localhost:3080/api_nom';
   CARD_API: string = 'http://localhost:3080/card';
   
   
@@ -14,9 +15,13 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) {}
 
-  GetBoisson(ingredientsInPossession: string) {
-    return this.httpClient.post<any[]>(`${this.REST_API}`, { ingredientsInPossession });
+  GetBoissonParIngredient(recherche: string) {
+    console.log("recherche %s", recherche);
+    return this.httpClient.post<any[]>(`${this.REST_API_INGREDIENT}`, { recherche });
+  }
 
+  GetBoissonParNom(recherche: string){
+    return this.httpClient.post<any[]>(`${this.REST_API_NOM}`, { recherche });
   }
 
   GetCard(id : string) {

@@ -1,28 +1,38 @@
-<form (ngSubmit)="onSubmit()">
+<form *ngIf="!Affiche_Carte" (ngSubmit)="onSubmit()">
   <div>
-    <label for="ingredientsInput">Ingrédients (séparés par des virgules) :</label>
-    <input type="text" id="ingredientsInput" [(ngModel)]="ingredientsInPossession" name="ingredientsInPossession" />
+    <label id="recherche" for="test">Recherche par nom :</label>
+    <div class="search">
+      <input type="checkbox" id="test" class="toggle" (change)="onCheckboxChange($event)">
+      <label for="test" class="label">
+        <div class="ball"></div>
+      </label>
+      <input type="text" id="ingredientsInput" [(ngModel)]="recherche" name="recherche" />
+    </div>
   </div>
-
   <button type="submit">Rechercher</button>
 </form>
 
 @if(Affiche_Carte){
   <div margin-top="20px">
+  <!-- affiche l'image en taille carré  
+  <img src="{{url}}" alt="image" width="550" height="600"> -->
+  <a [href]="url" download="{{url}}">
+    <img src="{{url}}" alt="image" width="550" height="600">
+  </a>
   <!-- met un bouton pour revenir a la liste -->
-  <button (click)="Affiche_Carte = false" class="return-button">Retour à la liste</button>
-  <!-- affiche l'image en taille carré  -->
-  <img src="{{url}}" alt="image" width="600" height="681">
   </div>
-
+  <button (click)="Affiche_Carte = false" class="return-button" style="margin-top: 20px;">Retour à la liste</button>
 }@else{
   <div *ngIf="recipes.length > 0">
     <h3>Résultats de la recherche :</h3>
     <ul>
       <li *ngFor="let recipe of ListBoissons" (click)="RecipeChosen(recipe.id)">
-        {{ recipe.id }} - {{ recipe.title }}
+        {{ recipe.title }}
       </li>
     </ul>
+  </div>
+  <div *ngIf="recipes.length === 0">
+    <h4>Aucun résultat trouvé</h4>
   </div>
 }
 

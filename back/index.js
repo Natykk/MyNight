@@ -90,16 +90,17 @@ app.post('/signup', (req, res) => {
 });
 
 // endpoint pour l'API
-app.post('/api', (req, res) => {
+app.post('/api_ingredient', (req, res) => {
   // Obtenez les ingrédients à partir des paramètres de requête ou utilisez une liste par défaut
-  let ingredients = req.body.ingredientsInPossession;
-  ingredients = ingredients.split(',');
+  let recherche = req.body.recherche;
+  console.log("ingridents : %s", recherche);
+  recherche = recherche.split(',');
   let data = '';
 
   // les/l'ingredients n'est pas null et est un tableau
-  if (!ingredients || !Array.isArray(ingredients)) {
-    console.log(ingredients);
-    console.log(ingredients.class);
+  if (!recherche || !Array.isArray(recherche)) {
+    console.log(recherche);
+    console.log(recherche.class);
     return res.status(400).json({ error: 'Veuillez fournir des ingrédients valides' });
   }
 
@@ -107,7 +108,54 @@ app.post('/api', (req, res) => {
   const options = {
     hostname: 'api.spoonacular.com',
     port: 443,
-    path: `/recipes/findByIngredients?type=drink&ingredients=${ingredients.join(',')}&number=10&apiKey=${cle}`,
+    path: `/recipes/findByIngredients?type=drink&ingredients=${recherche.join(',')}&number=10&apiKey=${cle}`,
+    method: 'GET',
+  };
+
+  // Effectuez la requête HTTPS vers l'API externe
+  const requ = https.request(options, (response) => {
+    // Accumulez les morceaux de données reçus
+    response.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // Une fois que toutes les données ont été reçues
+    response.on('end', () => {
+      console.log(data);
+      // Envoyez les données au client
+      res.status(200).json({ message: 'Requête API réussie', content: data });
+    });
+  });
+  
+  // Gestion des erreurs de requête
+  requ.on('error', (error) => {
+    console.error(error);
+    res.status(500).json({ error: 'Erreur lors de la requête vers l\'API externe' });
+  });
+
+  // Terminez la requête (important pour l'envoi de la requête)
+  requ.end();
+});
+
+  // endpoint pour l'API
+app.post('/api_nom', (req, res) => {
+  // Obtenez les ingrédients à partir des paramètres de requête ou utilisez une liste par défaut
+  let recherche = req.body.recherche;
+  recherche = recherche.split(',');
+  let data = '';
+
+  // les/l'ingredients n'est pas null et est un tableau
+  if (!recherche || !Array.isArray(recherche)) {
+    console.log(recherche);
+    console.log(recherche.class);
+    return res.status(400).json({ error: 'Veuillez fournir des ingrédients valides' });
+  }
+
+  // Construisez la requête externe avec les ingrédients fournis
+  const options = {
+    hostname: 'api.spoonacular.com',
+    port: 443,
+    path: `/recipes/complexSearch?type=drink&query=${recherche}&number=10&apiKey=${cle}`,
     method: 'GET',
   };
 
@@ -135,6 +183,7 @@ app.post('/api', (req, res) => {
   // Terminez la requête (important pour l'envoi de la requête)
   requ.end();
 });
+
 
 //Endpoint pour le covoiturage
 app.post('/ajout_trajet', async (req, res) => {
