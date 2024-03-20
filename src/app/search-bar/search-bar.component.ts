@@ -99,28 +99,6 @@ export class SearchBarComponent {
         } catch (error) {
             console.error('Erreur lors de l\'analyse de la chaîne JSON :', error);
         }
-        
-        /*
-        if (this.ListBoissons[0] && this.ListBoissons[0].content) {
-          try {
-            const parsedContent = JSON.parse(this.ListBoissons[0].content);
-            console.log(parsedContent);
-            this.recipes = parsedContent;
-            if (Array.isArray(parsedContent)) {
-              this.ListBoissons = parsedContent;
-
-              console.log(this.ListBoissons);
-            } else {
-              console.error('La propriété "content" n\'est pas un tableau JSON valide dans la réponse API.');
-            }
-            
-          } catch (error) {
-            console.error('Erreur lors de l\'analyse de la propriété "content" en JSON :', error);
-          }
-        } else {
-          console.error('La propriété "content" n\'est pas présente dans la réponse API.');
-        }
-        */
       });
     }
   }
