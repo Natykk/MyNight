@@ -27,7 +27,7 @@ export class AppComponent {
       style: { 'background-color': 'rgba(0, 0, 0, 0.6)' }
     },
     {
-      title: 'Recette',
+      title: 'Recipes',
       content: 'Content for Manger slide',
       style: { 'background-color': 'rgba(0, 0, 0, 0.3)' }
     },
@@ -37,7 +37,7 @@ export class AppComponent {
       style: { 'background-color': 'rgba(0, 0, 0, 0.3)' }
     },
     {
-      title: 'Covoiturage',
+      title: 'Carpooling',
 
      content: 'Content for Retourner a la maison slide',
       style: { 'background-color': 'rgba(0, 0, 0, 0.3)' }
