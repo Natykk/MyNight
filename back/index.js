@@ -231,8 +231,11 @@ app.post('/ajout_trajet', async (req, res) => {
 });
 
 app.get('/getTrajets', async (req, res) => {
-
-  const traj = await Trajet.find({});
+  const traj = await Trajet.find({
+    Depart: req.body.depart,
+    Arrivee: req.body.arrivee,
+    Date: req.body.date
+  });
   console.log(traj);
   res.json(traj);
   return res.status(200);
