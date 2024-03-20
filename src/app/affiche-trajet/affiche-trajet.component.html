@@ -1,17 +1,16 @@
+<button class="refresh-btn" (click)="afficherTrajets()">Rafraichir</button>
 
-<button (click)="afficherTrajets()">Rafraichir</button>
-<!-- formate le json -->
-
-<!-- affiche les trajets -->
-<div *ngFor="let trajet of listTrajets">
-    <p>Depart: {{ trajet.Depart }}</p>
-    <p>Arrivee: {{ trajet.Arrivee }}</p>
-    <p>Date: {{ trajet.Date }}</p>
-    <p>Heure: {{ trajet.Heure }}</p>
-    <p>Nombre de place: {{ trajet.Nbplace }}</p>
-    <p>Prix: {{ trajet.Prix }}</p>
-    <p>Conducteur: {{ trajet.Conducteur }}</p>
-    <p>Passagers: {{ trajet.Passagers }}</p>
-    <p>------------------------------------</p>
+<div class="trajet-container">
+    <div class="trajet-card" *ngFor="let trajet of listTrajets">
+        <div class="trajet-info">
+            <p><strong>Départ:</strong> {{ trajet.Depart }}</p>
+            <p><strong>Arrivée:</strong> {{ trajet.Arrivee }}</p>
+            <p><strong>Date:</strong> {{ trajet.Date }}</p>
+            <p><strong>Heure:</strong> {{ trajet.Heure }}</p>
+            <p><strong>Nombre de place:</strong> {{ trajet.Nbplace }}</p>
+            <p><strong>Prix:</strong> {{ trajet.Prix }}</p>
+            <p><strong>Conducteur:</strong> {{ trajet.Conducteur }}</p>
+            <p><strong>Passagers:</strong> {{ trajet.Passagers }}</p>
+        </div>
+    </div>
 </div>
-

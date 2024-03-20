@@ -1,0 +1,32 @@
+.refresh-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.trajet-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.trajet-card {
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 0 0 auto; /* Let the cards shrink if necessary */
+    margin-right: 20px; /* Add spacing between cards */
+}
+
+.trajet-info p {
+    margin: 5px 0;
+}
+
+.trajet-info strong {
+    font-weight: bold;
+    margin-right: 5px;
+}

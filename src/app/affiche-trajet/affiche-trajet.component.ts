@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AfficheTrajetComponent {
   protected listTrajets: any;
-  GET_TRAJET: string = 'http://localhost:3080/getTrajets';
+  GET_TRAJET: string = 'http://162.19.76.135:3080/getTrajets';
   constructor(private apiService: ApiService,private httpClient: HttpClient) {}
   afficherTrajets() {
     // Fais une requete au backend pour recuperer les trajets
