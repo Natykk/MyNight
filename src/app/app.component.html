@@ -17,22 +17,25 @@
               } @else if (slide.title === 'Carpooling'){
                 <!-- affiche une balise suivant le bouton appuyé   -->
                 <div>
-                <button (click)="ButtonChoisi = 'Proposer une Trajet'">Proposer une Trajet</button>
-                <button (click)="ButtonChoisi = 'Rechercher un Trajet'">Rechercher un Trajet</button>
-                @if (ButtonChoisi === 'Proposer une Trajet'){
-                  <div>
-                  <app-ajout_Trajet></app-ajout_Trajet>
-                  </div>
-                } @else if (ButtonChoisi === 'Rechercher un Trajet'){
-                  <div>
-                  <app-affiche-trajet></app-affiche-trajet>
-                  </div>
-                }
+                  <button (click)="ButtonChoisi = 'Proposer une Trajet'" class="choix_type_trajet">Submit a trip</button>
+                  <button (click)="ButtonChoisi = 'Rechercher un Trajet'" class="choix_type_trajet">Find a trip</button>
+                  @if (ButtonChoisi === 'Proposer une Trajet'){
+                    <div>
+                    <app-ajout_Trajet></app-ajout_Trajet>
+                    </div>
+                  } 
+                  @else if (ButtonChoisi === 'Rechercher un Trajet'){
+                    <div>
+                    <app-affiche-trajet></app-affiche-trajet>
+                    </div>
+                  }
                 </div>
                 
-              } @else if (slide.title === 'About us'){
+              } 
+              @else if (slide.title === 'About us'){
                 <h5>We're a group of 4 students in our 3rd year of a bachelor's degree in computer science.</h5> <h5>The basic aim of the project was to create a web application using Angular, API Rest, Nodejs and MongoDB technologies. </h5>
-              } @else {
+              } 
+              @else {
                 <p>{{ slide.content }}</p>
               }
             </div>

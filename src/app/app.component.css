@@ -90,6 +90,20 @@
   margin-left: 0;
 }
 
+.choix_type_trajet {
+  background-color: #1ec8db;
+  border-color: #1ec8db;
+  margin: 5px;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.choix_type_trajet:hover {
+  background-color: #4c89af;
+  border-color: #4c89af;
+}
+
 @media (min-width: 1250px) {
   #log-nav {
     width: 10%;

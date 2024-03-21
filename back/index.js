@@ -184,6 +184,19 @@ app.post('/api_nom', (req, res) => {
   requ.end();
 });
 
+app.put('/trajets/:id/update_nb_places', async (req, res) => {
+  const { id } = req.params;
+  const { nb_place } = req.body;
+
+  try {
+    const trajet = await Trajet.findByIdAndUpdate(id, { nb_place }, { new: true });
+    res.status(200).json(trajet);
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour du nombre de places :', error);
+    res.status(500).json({ message: 'Erreur lors de la mise à jour du nombre de places' });
+  }
+});
+
 
 //Endpoint pour le covoiturage
 app.post('/ajout_trajet', async (req, res) => {
@@ -230,16 +243,19 @@ app.post('/ajout_trajet', async (req, res) => {
   }
 });
 
-app.get('/getTrajets', async (req, res) => {
-  const traj = await Trajet.find({
-    Depart: req.body.depart,
-    Arrivee: req.body.arrivee,
-    Date: req.body.date
-  });
-  console.log(traj);
-  res.json(traj);
-  return res.status(200);
-  
+app.get('/get_trajet', async (req, res) => {
+  try {
+    const traj = await Trajet.find({
+      Depart: req.query.depart,
+      Arrivee: req.query.arrivee,
+      Date: req.query.date
+    });
+    console.log(traj);
+    res.json(traj);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erreur lors de la récupération des trajets' });
+  }
 });
 
 app.post('/card',  (req, res) => {

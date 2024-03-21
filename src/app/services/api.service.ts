@@ -10,8 +10,6 @@ export class ApiService {
   REST_API_NOM: string = 'http://localhost:3080/api_nom';
   CARD_API: string = 'http://localhost:3080/card';
   
-  
-
 
   constructor(private httpClient: HttpClient) {}
 

@@ -1,6 +1,3 @@
-
-
-
 /* Ajoutez ces styles à votre feuille de style CSS */
 .menu-icon {
   display: none;
@@ -12,6 +9,7 @@
   z-index: 2001; /* La navbar doit avoir un z-index supérieur au contenu derrière */
   text-align: center;
 }
+
 
 .menu-icon a {
   display: block;
@@ -36,4 +34,12 @@ header {
 }
 .fond_barre{
   background: grey;
+}
+
+button strong:hover{
+  color: #1ec8db;
+}
+
+a strong:hover{
+  color: #1ec8db;
 }

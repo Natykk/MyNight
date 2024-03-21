@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {ApiService} from "../services/api.service";
 import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ajout_Trajet',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   templateUrl: './ajout_Trajet.component.html',
   styleUrl: './ajout_Trajet.component.css',
@@ -21,10 +23,6 @@ export class Ajout_TrajetComponent {
   nbPlace: string = '';
   prix: string = '';
   conducteur: string = '';
-  
-
-
-
 
   constructor(private cookieService: CookieService,private apiService: ApiService) {}
 
