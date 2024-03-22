@@ -28,10 +28,10 @@
         @if (!isConnected()) {
         <ul class="navbar-nav ml-auto" id="log-nav">
           <li class="nav-item" id="sign-in">
-            <a class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in</strong></a>
+            <button class="navbar-brand nav-link" (click)="openSignInDialog()"><strong>Sign in</strong></button>
           </li>
           <li class="nav-item">
-            <a class="navbar-brand nav-link" (click)="openLoginDialog()"><strong>Login</strong></a>
+            <button class="navbar-brand nav-link" (click)="openLoginDialog()"><strong>Login</strong></button>
           </li>
         </ul>
       } @else {<!--Fais un element "Welcome Nom" et un bouton de deconnexion-->
@@ -63,8 +63,5 @@
     <a class="navbar-brand nav-link " href="#" (click)="openSignInDialog()">Sign in</a>
     <a class="navbar-brand nav-link " href="#" (click)="openLoginDialog()">Login</a>
   </nav>
-
-</div>
+  </div>
 }
-
-

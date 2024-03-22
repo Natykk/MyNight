@@ -184,17 +184,9 @@ app.post('/api_nom', (req, res) => {
   requ.end();
 });
 
-app.put('/trajets/:id/update_nb_places', async (req, res) => {
-  const { id } = req.params;
-  const { nb_place } = req.body;
-
-  try {
-    const trajet = await Trajet.findByIdAndUpdate(id, { nb_place }, { new: true });
-    res.status(200).json(trajet);
-  } catch (error) {
-    console.error('Erreur lors de la mise à jour du nombre de places :', error);
-    res.status(500).json({ message: 'Erreur lors de la mise à jour du nombre de places' });
-  }
+app.put('/update-places', async (req, res) => {
+  const trajetId = req.body.trajetId;
+  console.log("param ",trajetId);
 });
 
 

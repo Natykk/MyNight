@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {MatFormField} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
@@ -18,9 +18,10 @@ import { ApiService} from "../services/api.service";
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.css'
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit{
   checked: boolean = false;
   Affiche_Carte: boolean = false;
+  aff_result: boolean = false;
   searchQuery: string = '';
   recherche: string = '';
   Boissons: any = [];
@@ -45,6 +46,7 @@ export class SearchBarComponent {
   }
 
   onSubmit() {
+    this.aff_result = true;
     this.Affiche_Carte = false;
     // Logique de recherche en fonction des ingrédients en possession
     if (this.checked){
@@ -111,8 +113,13 @@ export class SearchBarComponent {
       this.url = JSON.parse(response.content).url;
 
       this.Affiche_Carte = true;
+    });
+  }
 
-  });
+  ngOnInit(){
+    this.checked = false;
+    this.Affiche_Carte = false;
+    this.aff_result= false;
   }
 }
 

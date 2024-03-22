@@ -48,6 +48,15 @@ export class AfficheTrajetComponent {
   }
   
   selectTrajet(trajetId: string) {
-    
+    this.httpClient.post<any>('http://localhost:3080/update-places', { trajetId }).subscribe(
+      response => {
+        console.log('Nombre de places mis à jour avec succès');
+        // Mettre à jour la liste des trajets dans votre application si nécessaire
+      },
+      error => {
+        console.error('Erreur lors de la mise à jour du nombre de places:', error);
+        // Gérer l'erreur dans votre application
+      }
+    );
   }
 }
