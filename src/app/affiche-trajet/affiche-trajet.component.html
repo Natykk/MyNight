@@ -22,23 +22,23 @@
         </div>
       </div>
     </form>
-    <button class="btn btn-primary" (click)="afficherTrajets()">Rechercher</button>
+    <button class="btn btn-primary" (click)="afficherTrajets()">Search</button>
 </div>
 <div class="trajet-container" *ngIf="aff_trajets" style="margin-top: 20px;">
     <div class="trajet-card" *ngFor="let trajet of trajets">
         <div class="trajet-info">
-            <p><strong>Départ:</strong> {{ trajet.Depart }}</p>
-            <p><strong>Arrivée:</strong> {{ trajet.Arrivee }}</p>
+            <p><strong>Departure:</strong> {{ trajet.Depart }}</p>
+            <p><strong>Arrival:</strong> {{ trajet.Arrivee }}</p>
             <p><strong>Date:</strong> {{ trajet.Date }}</p>
-            <p><strong>Heure:</strong> {{ trajet.Heure }}</p>
-            <p><strong>Prix:</strong> {{ trajet.Prix }}€</p>
-            <p><strong>Conducteur:</strong> {{ trajet.Conducteur }}</p>
-            <p><strong>Places disponibles:</strong> {{ trajet.Nbplace }}</p>
+            <p><strong>Hour:</strong> {{ trajet.Heure }}</p>
+            <p><strong>Price:</strong> {{ trajet.Prix }}€</p>
+            <p><strong>Driver:</strong> {{ trajet.Conducteur }}</p>
+            <p><strong>Available seats</strong> {{ trajet.Nbplace }}</p>
             <div *ngIf="trajet.Nbplace>0">
-              <button class="select-btn" (click)="selectTrajet(trajet._id)">Sélectionner</button>
+              <button class="select-btn" (click)="selectTrajet(trajet._id)">Select</button>
             </div>
             <div *ngIf="trajet.Nbplace==0">
-              <button class="complet-btn" disabled>Complet</button>
+              <button class="complet-btn" disabled>Full</button>
             </div>
         </div>
     </div>

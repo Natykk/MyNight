@@ -36,10 +36,10 @@ export class SearchBarComponent implements OnInit{
     const label = document.getElementById('recherche');
     if(label!=null){
       if (isChecked) {
-        label.textContent = 'Recherche par ingrédients :';
+        label.textContent = 'Search by ingredients:';
         this.checked = true;
       } else {
-        label.textContent = 'Recherche par nom :';
+        label.textContent = 'Search by name:';
         this.checked = false;
       }
     }
