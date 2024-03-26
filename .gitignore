@@ -43,6 +43,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Fichier .json pour la clé
+# Fichier .json pour les clé
 /back/donnee.json
-
+# Fichier .ts pour la clé mapbox
+src/app/map/mapbox_secret.ts

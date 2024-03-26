@@ -8,6 +8,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {SearchBarComponent} from "./search-bar/search-bar.component";
 import {Ajout_TrajetComponent} from "./ajout_Trajet/ajout_Trajet.component";
 import { AfficheTrajetComponent } from "./affiche-trajet/affiche-trajet.component";
+import { MapComponent } from "./map/map.component";
 
 
 @Component({
@@ -16,7 +17,7 @@ import { AfficheTrajetComponent } from "./affiche-trajet/affiche-trajet.componen
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     providers: [HttpClientModule, ApiService],
-    imports: [RouterOutlet, HttpClientModule, RecipeHelperModule, NgForOf, NavbarComponent, NgTemplateOutlet, SearchBarComponent, NgStyle, NgClass, Ajout_TrajetComponent, AfficheTrajetComponent]
+    imports: [RouterOutlet, HttpClientModule, RecipeHelperModule, NgForOf, NavbarComponent, NgTemplateOutlet, SearchBarComponent, NgStyle, NgClass, Ajout_TrajetComponent, AfficheTrajetComponent, MapComponent]
 })
 export class AppComponent {
 
