@@ -7,21 +7,21 @@
 }
 
 .carousel-item:nth-child(1) {
-  background-image: url('../img/background/citydraw.png');
+  background-image: url('../src/img/background/citydraw.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .carousel-item:nth-child(2) {
-  background-image: url('../img/background/cuisine2.jpg');
+  background-image: url('../src/img/background/cuisine2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .carousel-item:nth-child(3) {
-  background-image: url('../img/background/what\ to\ do.jpg');
+  background-image: url('../src/img/background/what_to_do.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -29,7 +29,7 @@
 }
 
 .carousel-item:nth-child(4) {
-    background-image: url('../img/background/blur.jpg');
+    background-image: url('../src/img/background/blur.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -43,7 +43,7 @@
   #introCarousel {
     margin-top: -60px;
   }
-  
+
 }
 
 .navbar .nav-link {
@@ -92,13 +92,3 @@
     justify-content: flex-end;
   }
 }
-
-@media (max-width: 1250px){
-  #sign-in{
-    
-  }
-}
-
-
-
-

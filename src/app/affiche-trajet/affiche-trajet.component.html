@@ -1,0 +1,45 @@
+<div class="col-md-18" style="margin-top: 20px;">
+    <!-- depart: string, arrivee: string, date: string, heure: string, nbPlace: string, prix: string, conducteur: string, passagers: string -->
+    <form>
+      <div class="form-group row">
+        <label for="depart" class="col-sm-3 col-form-label" style="color:white;">Departure</label>
+        <div class="col-sm-9">
+          <input type="text" id="depart" class="form-control" name="depart" [(ngModel)]="depart">
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="arrivee" class="col-sm-3 col-form-label" style="color:white">Arrival</label>
+        <div class="col-sm-9">
+          <input type="text" id="arrivee" class="form-control" [(ngModel)]="arrivee" name="arrivee" />
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label for="date" class="col-sm-3 col-form-label" style="color:white">Date</label>
+        <div class="col-sm-9">
+          <input type="date" id="date" class="form-control" name="date" [(ngModel)]="date">
+        </div>
+      </div>
+    </form>
+    <button class="btn btn-primary" (click)="afficherTrajets()">Search</button>
+</div>
+<div class="trajet-container" *ngIf="aff_trajets" style="margin-top: 20px;">
+    <div class="trajet-card" *ngFor="let trajet of trajets">
+        <div class="trajet-info">
+            <p><strong>Departure:</strong> {{ trajet.Depart }}</p>
+            <p><strong>Arrival:</strong> {{ trajet.Arrivee }}</p>
+            <p><strong>Date:</strong> {{ trajet.Date }}</p>
+            <p><strong>Hour:</strong> {{ trajet.Heure }}</p>
+            <p><strong>Price:</strong> {{ trajet.Prix }}€</p>
+            <p><strong>Driver:</strong> {{ trajet.Conducteur }}</p>
+            <p><strong>Available seats</strong> {{ trajet.Nbplace }}</p>
+            <div *ngIf="trajet.Nbplace>0">
+              <button class="select-btn" (click)="selectTrajet(trajet._id)">Select</button>
+            </div>
+            <div *ngIf="trajet.Nbplace==0">
+              <button class="complet-btn" disabled>Full</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,231 @@
+/* Style pour le conteneur principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px; /* Ajout de marges latérales pour plus d'espace sur les côtés */
+}
+
+/* Style pour le formulaire */
+.form {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Style pour le conteneur de la carte */
+.card-container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Style pour le conteneur des résultats de recherche */
+.results-container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* Style pour le bouton "Retour à la liste" */
+.return-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.return-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Réagir à des écrans plus petits */
+@media only screen and (max-width: 600px) {
+  /* Pour des écrans jusqu'à 600px de largeur */
+  .form, .card-container, .results-container {
+    max-width: 100%; /* Utiliser la pleine largeur */
+  }
+}
+
+/* Style pour le formulaire de recherche */
+.form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column; /* Pour aligner les éléments verticalement */
+  align-items: center; /* Pour centrer les éléments horizontalement */
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style pour la liste des résultats de recherche */
+h3 {
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: green;
+}
+
+/* Style pour l'affichage de la carte */
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 600px;
+}
+/* Style pour le conteneur de la carte */
+.card-container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden; /* Pour éviter que l'image ne dépasse de la fenêtre */
+}
+
+/* Style pour l'image */
+.card img {
+  max-width: 100%; /* Ne pas dépasser la largeur de l'écran */
+  
+}
+
+  /* Style pour le formulaire de recherche */
+form {
+  margin-bottom: 20px;
+  width: 100%; /* Utilise 100% de la largeur disponible */
+  display: flex;
+  flex-wrap: wrap; /* Permet à ses éléments enfants de passer à la ligne si nécessaire */
+}
+
+.recherche {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  flex: 1; /* Utilise tout l'espace disponible */
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  flex: 0 0 auto; /* Ne pas agrandir ou réduire le bouton */
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px; /* Ajoute un espace entre le champ de texte et le bouton */
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
+.toggle {
+  visibility: hidden;
+}
+
+.label {
+  background-color: lightgrey;
+  width: 68px;
+  height: 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  position: relative;
+}
+
+.toggle:checked + .label {
+  background-color: grey;
+}
+
+.ball {
+  background-color: white;
+  width: 27px;
+  height: 27px;
+  border-radius: 50px;
+  position: absolute;
+  top: 1.5px;
+  bottom: 1.5px;
+  animation: slideOff 0.3s linear forwards;
+}
+
+.toggle:checked + .label .ball {
+  animation: slideOn 0.3s linear forwards;
+}
+
+@keyframes slideOn {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+
+  50% {
+    transform: translateX(20px) scale(1);
+  }
+
+  100% {
+    transform: translateX(40px) scale(1);
+  }
+}
+
+@keyframes slideOff {
+  0% {
+    transform: translateX(40px) scale(1);
+  }
+
+  50% {
+    transform: translateX(20px) scale(1);
+  }
+
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}

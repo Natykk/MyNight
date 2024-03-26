@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist",
-            "index": "src/index.html",
+            "index": "index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -26,13 +26,21 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/img/logo.png",
+              "src/img/background/blur.jpg",
+              "src/img/background/citydraw.png",
+              "src/img/background/cuisine2.jpg",
+              "src/img/background/what_to_do.jpg"
             ],
             "styles": [
-              "src/styles.css"
+              "src/custom-theme.scss",
+              "css/style.css",
+              "css/mdb.dark.min.css",
+              "css/mdb.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/js/mdb.umd.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,12 +95,20 @@
             "inlineStyleLanguage": "css",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/img/logo.png",
+              "src/img/background/blur.jpg",
+              "src/img/background/citydraw.png",
+              "src/img/background/cuisine2.jpg",
+              "src/img/background/what_to_do.jpg"
             ],
             "styles": [
-              "src/styles.css"
+              "css/style.css",
+              "css/mdb.dark.min.css",
+              "css/mdb.min.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }

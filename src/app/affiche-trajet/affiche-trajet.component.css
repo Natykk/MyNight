@@ -1,0 +1,67 @@
+.select-btn {
+    background-color: #00ff3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.trajet-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.trajet-card {
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 0 0 auto; /* Let the cards shrink if necessary */
+    margin-right: 20px; /* Add spacing between cards */
+}
+
+.trajet-info p {
+    margin: 5px 0;
+}
+
+.trajet-info strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.form-group label {
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+.form-group input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+    border-color: #3e8e41;
+}
+
+
+.complet-btn {
+    background-color: #d31515;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}

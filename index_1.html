@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapbox Example</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+
+  <div id="geocoder" class="geocoder"></div>
+  <style>
+    #map {
+      height: 800px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="categories">
+    <label><input type="checkbox" class="category-checkbox" value="hotel"> Hotel</label>
+    <label><input type="checkbox" class="category-checkbox" value="restaurant"> Restaurant</label>
+    <label><input type="checkbox" class="category-checkbox" value="cafe"> Cafe</label>
+  </div>
+
+  <script>
+    var latitude;
+    var longitude;
+    mapboxgl.accessToken = 'pk.eyJ1IjoicHJvamV0bDNpcG0iLCJhIjoiY2x0NXVyam9iMDQ2NzJpbTlkaXRldHlhZiJ9.hNVUYEAyA8Jf_asEkBMvJw';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-74.5, 40],
+      zoom: 9
+    });
+
+    // Ajouter la barre de recherche Mapbox Geocoder
+    var geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    });
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+    // Ajouter un marqueur pour la position de l'utilisateur
+    function addUserMarker(latitude, longitude) {
+      new mapboxgl.Marker({
+        color: 'red' // couleur du marqueur
+      })
+      .setLngLat([longitude, latitude])
+      .addTo(map);
+    }
+
+// Fonction pour obtenir les coordonnées de l'utilisateur
+function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    // Vérifier si les coordonnées de l'utilisateur sont déjà sauvegardées dans le stockage local
+    const savedLocation = localStorage.getItem('userLocation');
+    if (savedLocation) {
+      const { latitude, longitude } = JSON.parse(savedLocation);
+      resolve({ latitude, longitude });
+    } else {
+      // Si les coordonnées ne sont pas déjà sauvegardées, demander la géolocalisation
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // Sauvegarder les coordonnées dans le stockage local pour une utilisation ultérieure
+          localStorage.setItem('userLocation', JSON.stringify({ latitude, longitude }));
+          resolve({ latitude, longitude });
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    }
+  });
+}
+
+// Fonction pour calculer la distance entre deux points géographiques en utilisant la formule de Haversine
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371e3; // Rayon de la Terre en mètres
+  const φ1 = lat1 * Math.PI / 180; // Conversion en radians
+  const φ2 = lat2 * Math.PI / 180;
+  const Δφ = (lat2 - lat1) * Math.PI / 180;
+  const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+  const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) *
+    Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const distance = R * c; // Distance en mètres
+  return distance;
+}
+
+// Mettre à jour la carte avec les lieux à proximité de l'utilisateur
+function updateMap() {
+  var categories = [];
+  document.querySelectorAll('.category-checkbox:checked').forEach(function(checkedCheckbox) {
+    categories.push(checkedCheckbox.value);
+  });
+
+  var maxDistance = 1000; // Distance maximale en mètres
+
+  // Obtenir les coordonnées de l'utilisateur
+  getUserLocation()
+    .then(({ latitude, longitude }) => {
+      // Construire la requête vers l'API de géocodage de Mapbox avec les coordonnées de l'utilisateur
+      categories.forEach(function(category) {
+        var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + category + '.json?proximity=' + longitude + ',' + latitude + '&access_token=' + mapboxgl.accessToken;
+
+        // Effectuer la requête
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            data.features.forEach(feature => {
+              var coordinates = feature.geometry.coordinates;
+              var name = feature.text;
+
+              // Calculer la distance entre le lieu et l'utilisateur
+              var distance = calculateDistance(latitude, longitude, coordinates[1], coordinates[0]);
+
+              // Si la distance est inférieure ou égale à la distance maximale, afficher le lieu
+              if (distance <= maxDistance) {
+                // Ajouter un marqueur pour chaque lieu trouvé
+                new mapboxgl.Marker()
+                  .setLngLat(coordinates)
+                  .setPopup(new mapboxgl.Popup().setHTML('<h3>' + name + '</h3>'))
+                  .addTo(map);
+              }
+            });
+          });
+      });
+
+      // Ajouter le marqueur de l'utilisateur
+      addUserMarker(latitude, longitude);
+    })
+    .catch(error => {
+      console.error('Erreur lors de la récupération de la position de l\'utilisateur : ', error);
+    });
+}
+
+
+
+    // Écouter les événements de changement sur les cases à cocher
+    document.querySelectorAll('.category-checkbox').forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        // Effacer les marqueurs existants sur la carte
+        document.querySelectorAll('.mapboxgl-marker').forEach(function(marker) {
+          marker.remove();
+        });
+        // Mettre à jour les lieux affichés sur la carte lorsque les cases à cocher sont cochées ou décochées
+        updateMap();
+      });
+    });
+
+    // Centrer la carte sur la position de l'utilisateur
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+
+        // Centrer la carte sur la position de l'utilisateur
+        map.setCenter([longitude, latitude]);
+        // Ajouter un marqueur pour la position de l'utilisateur
+        addUserMarker(latitude, longitude);
+        // Mettre à jour les lieux affichés sur la carte au chargement de la page
+        updateMap();
+      });
+    } else {
+      alert("La géolocalisation n'est pas prise en charge par votre navigateur.");
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,7 @@
 
 # Node
 /node_modules
+/back/node_modules/
 npm-debug.log
 yarn-error.log
 
@@ -41,3 +42,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Fichier .json pour les clé
+/back/donnee.json
+# Fichier .ts pour la clé mapbox
+src/app/map/mapbox_secret.ts

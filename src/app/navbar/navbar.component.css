@@ -1,0 +1,41 @@
+/* Ajoutez ces styles à votre feuille de style CSS */
+.menu-icon {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #444; /* Couleur de fond de la navbar */
+  z-index: 2001; /* La navbar doit avoir un z-index supérieur au contenu derrière */
+  text-align: center;
+}
+
+
+.menu-icon a {
+  display: block;
+  padding: 15px;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Ajoutez ces styles à votre feuille de style CSS */
+header {
+  text-align: center;
+}
+
+#navbar_mobile {
+  font-size: 20px;
+  color: #ffffff;
+
+  cursor: pointer;
+  padding: 15px;
+  margin: 0;
+  display: inline-block; /* Ajoutez cette propriété pour que le texte soit centré horizontalement */
+}
+.fond_barre{
+  background: grey;
+}
+
+button strong:hover{
+  color: #1ec8db;
+}
