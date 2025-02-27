@@ -47,3 +47,9 @@ Thumbs.db
 /back/donnee.json
 # Fichier .ts pour la clé mapbox
 src/app/map/mapbox_secret.ts
+
+#Certificat SSL
+back/server.cert
+back/server.key
+server.cert
+server.key

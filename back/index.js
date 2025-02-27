@@ -93,7 +93,7 @@ app.post('/signup', (req, res) => {
 app.post('/api_ingredient', (req, res) => {
   // Obtenez les ingrédients à partir des paramètres de requête ou utilisez une liste par défaut
   let recherche = req.body.recherche;
-  console.log("ingridents : %s", recherche);
+  console.log("ingredient : %s", recherche);
   recherche = recherche.split(',');
   let data = '';
 
@@ -308,9 +308,14 @@ app.post('/auth', async (req, res) => {
     // Si le mot de passe correspond
     if (isMatch) {
       // Création d'un jeton JWT en encodant les informations de l'utilisateur
-      const token = jwt.encode(user, secret);
+      const token = jwt.encode({ user: req.body.user }, secret);
       // Retour des informations, y compris le jeton, au format JSON
-      res.json({ success: true, token: 'JWT ' + token });
+      res.cookie('token', 'JWT ' + token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'Strict',
+      });
+      res.json({ success: true });
     } else {
       // Si le mot de passe ne correspond pas
       res.send({ success: false, msg: 'Authentification échouée. Mot de passe incorrect.' });
@@ -348,9 +353,15 @@ app.get('/userinfo', (req, res) => {
   }
 });
 
+// Charger le certificat SSL
+const options = {
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.cert')
+};
+
 // Lancement du serveur Express
 const startServer = () => {
-  app.listen(port, () => {
-    console.log(`Serveur à l'écoute sur le port::${port}`);
+  https.createServer(options, app).listen(port, () => {
+    console.log(`Serveur sécurisé à l'écoute sur https://localhost:${port}`);
   });
 };

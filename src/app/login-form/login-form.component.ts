@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import { NavbarComponent } from '../navbar/navbar.component';
 import { DialogService } from '../dialog.service';
+import * as bcrypt from 'bcryptjs';
+const salt = bcrypt.genSaltSync(10);
 @Component({
   selector: 'app-login-form',
   standalone: true,
@@ -12,6 +14,7 @@ import { DialogService } from '../dialog.service';
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
+
 export class LoginFormComponent {
   // Créez un formulaire réactif pour le formulaire de connexion
   loginForm = new FormGroup({
@@ -33,7 +36,7 @@ export class LoginFormComponent {
 
   connection()  {
     // Récupération des données du formulaire
-    const URL_Auth = 'http://localhost:3080/auth';
+    const URL_Auth = 'https://localhost:3080/auth';
     const mdp = this.loginForm.value.mdp;
     const user = this.loginForm.value.user;
     console.log('Données du formulaire :', user, mdp);
@@ -71,7 +74,7 @@ export class LoginFormComponent {
   }
 
   accountCreation() {
-    const URL_Auth = 'http://localhost:3080/signup';
+    const URL_Auth = 'https://localhost:3080/signup';
 
     // Récupération des données du formulaire
     const user = this.loginForm.value.user;
